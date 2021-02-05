@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+include_once('funciones/conexion_db.php');
 
 if (isset($_SESSION['ID'])) {
     header('Location: principal.php');
@@ -9,17 +10,9 @@ if (isset($_SESSION['ID'])) {
 if (isset($_POST['usuario'])) {
     $usuario = $_POST['usuario'];
     $clave = $_POST['clave'];
-
-    $db_u = "root";
-    $db_c = "";
-    $db_nombre = "drive-santiago";
-    $db_url = "127.0.0.1";
-
-    $link =  mysqli_connect($db_url, $db_u, $$db_c, $db_nombre);
-
     $consulta = "SELECT ID FROM usuarios WHERE Usuario='" . $usuario . "' AND Clave='" . $clave . "'";
 
-    $resultado = mysqli_query($link, $consulta);
+    $resultado = mysqli_query($db_con, $consulta);
 
     if (mysqli_num_rows($resultado) > 0) {
         $result = mysqli_fetch_array($resultado);
