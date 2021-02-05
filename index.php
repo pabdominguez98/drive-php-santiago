@@ -20,7 +20,11 @@ if (isset($_POST['usuario'])) {
         $_SESSION['ID'] = $id;
         header('Location: principal.php');
     } else {
-        echo "Datos incorrectos";
+?>
+        <div class="alert alert-danger" role="alert">
+            Datos incorrectos
+        </div>
+<?php
     }
 }
 
