@@ -1,10 +1,13 @@
 <?php
 session_start();
 
+include_once('funciones/conexion_db.php');
+
 if (!isset($_SESSION['ID'])) {
     header("Location: index.php");
 }
 
+$id = $_SESSION['ID'];
 
 
 
@@ -45,26 +48,52 @@ if (!isset($_SESSION['ID'])) {
         <div class="row">
             <div class="col-1"></div>
             <div class="col-5">
-                <div class="card text-center tarjeta-archivos">
-                    <div class="card-header">
-                        <ul class="nav nav-pills card-header-pills">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Compartir</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Editar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Eliminar</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Descargar</a>
-                    </div>
-                </div>
+
+                <?php
+
+                $consulta_archivos = "SELECT * FROM archivos_locales WHERE ID_usr='" . $id . "'";
+
+                $resultado_archivos = mysqli_query($db_con, $consulta_archivos);
+
+                if (mysqli_num_rows($resultado_archivos) > 0) {
+                    while ($result_archivos = mysqli_fetch_array($resultado_archivos)) {
+
+                ?>
+
+
+
+                        <div class="card text-center tarjeta-archivos">
+                            <div class="card-header">
+                                <ul class="nav nav-pills card-header-pills">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#">Compartir</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Editar</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Eliminar</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $result_archivos['Descripcion']; ?></h5>
+                                <span class="card-text">Tamaño: <?php echo $result_archivos['Tamaño']?></span>
+                                <br>
+                                <span class="card-text">Fecha de carga: <?php echo $result_archivos['Fecha']?></span>
+                                <br>
+                                <br>
+                                <a href="#" class="btn btn-primary">Descargar</a>
+                            </div>
+                        </div>
+
+
+
+                <?php
+                    }
+              }
+                ?>
+
             </div>
             <div class="col-6"></div>
 
