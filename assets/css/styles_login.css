@@ -1,0 +1,19 @@
+body{
+    background-image: url('../imagenes/wallpaper.jpg');
+}
+.div-formulario-ingreso {
+   position: relative;
+   height: 100vh;
+   overflow: auto;
+   padding-right: 30px;
+   padding-left: 30px;
+   border-left: 1px solid black;
+   background-color: #6b5b95;
+   opacity: 1;
+}
+
+.formulario-ingreso {
+   position: relative;
+   margin-top: 110px;
+   justify-content: center;
+}

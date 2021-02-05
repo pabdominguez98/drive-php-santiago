@@ -42,27 +42,8 @@ if (isset($_POST['usuario'])) {
 
     <title>Ingreso</title>
 
-    <style type="text/css">
-         body{
-             background-image: url('assets/imagenes/wallpaper.jpg');
-         }
-        .div-formulario-ingreso {
-            position: relative;
-            height: 100vh;
-            overflow: auto;
-            padding-right: 30px;
-            padding-left: 30px;
-            border-left: 1px solid black;
-            background-color: #6b5b95;
-            opacity: 1;
-        }
-
-        .formulario-ingreso {
-            position: relative;
-            margin-top: 110px;
-            justify-content: center;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="assets/css/styles_login.css">
+    
 </head>
 
 <body>
