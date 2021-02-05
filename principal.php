@@ -28,6 +28,11 @@
 </head>
 
 <body>
+    <section>
+        <?php
+           include('assets/componentes/navbar.php');
+        ?>
+    </section>
     <div class="container">
         <div class="row">
             <div class="col-4"></div>

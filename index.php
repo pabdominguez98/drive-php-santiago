@@ -43,11 +43,11 @@ if (isset($_POST['usuario'])) {
     <title>Ingreso</title>
 
     <link rel="stylesheet" type="text/css" href="assets/css/styles_login.css">
-    
+
 </head>
 
 <body>
-    <section>
+    <section class="contenedor">
         <div class="row">
             <div class="col-4"></div>
             <div class="col-4"></div>
