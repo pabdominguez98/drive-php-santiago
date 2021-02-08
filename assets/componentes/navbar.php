@@ -18,7 +18,7 @@ if ($uri == "/assets/componentes/navbar.php") {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <?php
-        if ($uri == "/principal.php") {
+        if ($uri != "/compartidos.php") {
         ?>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="compartidos.php">Archivos compartidos</a>

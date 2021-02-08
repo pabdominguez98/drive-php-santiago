@@ -18,6 +18,7 @@ if (isset($_POST['usuario'])) {
         $result = mysqli_fetch_array($resultado);
         $id = $result['ID'];
         $_SESSION['ID'] = $id;
+        $_SESSION['Usuario'] = trim($usuario);
         header('Location: principal.php');
     } else {
 ?>

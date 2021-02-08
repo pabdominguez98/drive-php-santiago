@@ -2,8 +2,6 @@
 
 include_once('conexion_db.php');
 
-
-
 $id = $_SESSION['ID'];
 
 session_start();
@@ -22,43 +20,36 @@ if (empty($_SESSION['ID'])) {
 
         $fecha = $arreglo_fecha['mday']."/".$arreglo_fecha['mon']."/".$arreglo_fecha['year'];
 
-      
-
         $fileExt = explode('.', $nombre);
 
         $file_ext_actual = strtolower(end($fileExt));
 
-        $peso = ($peso / 1000) . "KB";
+        $peso = round(($peso / 1000000), 2) . "MB";
 
-        $ident = str_replace(' ', '_', $nombre);
+       
+        $consulta_carga = "SELECT `ID` FROM `archivos_locales` WHERE ID_usr='" . $id . "' AND Nombre='" . $nombre . "'";
 
-        $consulta_mysql_1 = "SELECT `ID` FROM `archivos` WHERE Usuario='" . $id . "' AND Nombre='" . $nombre . "'";
-
-        $respuesta = mysqli_query($db_con, $consulta_mysql_1);
+        $respuesta = mysqli_query($db_con, $consulta_carga);
 
         if (mysqli_num_rows($respuesta) == 0) {
-            $solicitud_sql_2 = "INSERT INTO `archivos_locales` (`ID_usr`, `Descripcion`, `Tipo`, `Tamaño`, `Fecha`)
-             VALUES ('" . $id . "', '" . $nombre . "', '" . $file_ext_actual. "', '" . $peso . "', '" . $fecha . "')";
-            if (mysqli_query($db_con, $solicitud_sql_2)) {
+
+            $solicitud_carga_archivo = "INSERT INTO `archivos_locales` (`ID_usr`, `Descripcion`, `Tipo`, `Tamaño`, `Fecha`) VALUES ('" . $id . "', '" . $nombre . "', '" . $file_ext_actual. "', '" . $peso . "', '" . $fecha . "')";
+
+            if (mysqli_query($db_con, $solicitud_carga_archivo)) {
                 $ruta = "../archivos/usuarios/" . $id;
+
                 if (!is_dir($ruta)) {
                     mkdir($ruta, 0777, true);
                 }
 
-                $direccion_carpeta = "../archivos/usuarios" . "/" . $id . "/" . $ident;
+                $direccion_carpeta = "../archivos/usuarios" . "/" . $id . "/" . $nombre;
 
                 move_uploaded_file($tmp_name, $direccion_carpeta);
 
-                header("Location: http://localhost/principal.php?error=100");
-            } else {
-                header("Location: http://localhost/principal.php?error=200");
-            }
-        } else {
-            header("Location: http://localhost/principal.php?error=300");
-        }
-    } else {
-        header("Location: http://localhost/principal.php?error=400");
-    }
+                header("Location: http://localhost/principal.php?carga=1");
+            } 
+        } 
+    } 
 }
 
 
