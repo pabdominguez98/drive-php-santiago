@@ -230,7 +230,38 @@ if (!empty($_GET['carga'])) {
                                 <?php
                                 $link = "archivos/usuarios/$id/" . str_replace(' ', '%20', $result_archivos['Descripcion']);
                                 ?>
-                                <a href="<?php echo $link; ?>" target="_blank" class="btn btn-primary">Descargar</a>
+
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-<?php echo $result_archivos['ID']; ?>" aria-expanded="false" aria-controls="flush-collapseOne">
+                                                Compartido con:
+                                            </button>
+                                        </h2>
+                                        <div id="flush-<?php echo $result_archivos['ID']; ?>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <?php
+                                                $consulta_compartido_con = "SELECT usuario_compartido FROM archivos_compartidos WHERE ID_archivo='" . $result_archivos['ID'] . "' AND ID_origen='" . $id . "'";
+
+                                                if ($respuesta_consulta_compartido_con = mysqli_query($db_con, $consulta_compartido_con)) {
+
+                                                    while ($respuesta_compartidos_arreglo = mysqli_fetch_array($respuesta_consulta_compartido_con)) {
+                                                ?>
+                                                     <ul>
+                                                         <li><?php echo $respuesta_compartidos_arreglo['usuario_compartido']; ?></li>
+                                                     </ul>
+
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <a href="<?php echo $link; ?>" target="_blank" class="btn btn-primary boton-descargar-archivo">Descargar</a>
                             </div>
                         </div>
 
