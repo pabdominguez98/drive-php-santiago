@@ -18,7 +18,7 @@ if (isset($_POST['boton-cambiar-foto'])) {
         if (mysqli_query($db_con, $consulta_editar_foto)) {
             $ruta_imagen = "../archivos/imagenes-perfiles/$id";
             if (!is_dir($ruta_imagen)) {
-                mkdir($ruta_imagen, 0777, true);
+                mkdir($ruta_imagen, 0775, true);
             }
             $ruta_imagen_actual = "../archivos/imagenes-perfiles/$id/$imagen_actual";
 

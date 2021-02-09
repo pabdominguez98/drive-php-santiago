@@ -222,7 +222,7 @@ if (!empty($_GET['carga'])) {
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $result_archivos['Descripcion']; ?></h5>
-                                <span class="card-text">Tamaño: <?php echo $result_archivos['Tamaño'] ?></span>
+                                <span class="card-text">Tamaño: <?php echo $result_archivos['Peso'] ?></span>
                                 <br>
                                 <span class="card-text">Fecha de carga: <?php echo $result_archivos['Fecha'] ?></span>
                                 <br>

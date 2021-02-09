@@ -60,7 +60,7 @@ $usuario_logueado = $_SESSION['Usuario'];
                         </div>
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $respuesta_arreglo_comp['Descripcion']; ?></h5>
-                            <span class="card-text">Tamaño: <?php echo $respuesta_arreglo_comp['Tamaño'] ?></span>
+                            <span class="card-text">Tamaño: <?php echo $respuesta_arreglo_comp['Peso'] ?></span>
                             <br>
                             <span class="card-text">Fecha de carga: <?php echo $respuesta_arreglo_comp['Fecha'] ?></span>
                             <br>
