@@ -88,13 +88,13 @@ $id = $_SESSION['ID'];
                                                         <div class="modal-body">
                                                             <div class="mb-3">
                                                                 <label for="exampleInputEmail1" class="form-label">Ingresa el nuevo nombre del archivo</label>
-                                                                <input type="text" name="archivo-compartir" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                                <input type="text" name="usuario-compartir" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <input type="hidden" name="id-archivo-compartido" value="<?php echo urldecode($result_archivos['ID']); ?>">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary">Compartir</button>
+                                                            <button type="submit" class="btn btn-primary">Compartir</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -132,7 +132,7 @@ $id = $_SESSION['ID'];
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="funciones/eliminar_archivo.php?archivo=<?php echo $result_archivos['Descripcion']; ?>">Eliminar</a>
+                                        <a class="nav-link" href="funciones/eliminar_archivo.php?id-archivo=<?php echo $result_archivos['ID']; ?>&archivo=<?php echo $result_archivos['Descripcion']; ?>">Eliminar</a>
                                     </li>
                                 </ul>
                             </div>

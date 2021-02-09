@@ -3,6 +3,7 @@
 include_once('conexion_db.php');
 
 $id = $_SESSION['ID'];
+$usuario_logueado = $_SESSION['Usuario'];
 
 session_start();
 if (empty($_SESSION['ID'])) {
@@ -33,7 +34,7 @@ if (empty($_SESSION['ID'])) {
 
         if (mysqli_num_rows($respuesta) == 0) {
 
-            $solicitud_carga_archivo = "INSERT INTO `archivos_locales` (`ID_usr`, `Descripcion`, `Tipo`, `Tamaño`, `Fecha`) VALUES ('" . $id . "', '" . $nombre . "', '" . $file_ext_actual. "', '" . $peso . "', '" . $fecha . "')";
+            $solicitud_carga_archivo = "INSERT INTO `archivos_locales` (`ID_usr`, `Descripcion`, `Tipo`, `Tamaño`, `Fecha`, `Usuario`) VALUES ('" . $id . "', '" . $nombre . "', '" . $file_ext_actual. "', '" . $peso . "', '" . $fecha . "', '".$usuario_logueado."')";
 
             if (mysqli_query($db_con, $solicitud_carga_archivo)) {
                 $ruta = "../archivos/usuarios/" . $id;
@@ -51,9 +52,3 @@ if (empty($_SESSION['ID'])) {
         } 
     } 
 }
-
-
-
-
-
-?>

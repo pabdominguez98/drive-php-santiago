@@ -23,11 +23,11 @@ if (isset($_GET['usuario-compartir'])) {
         if (mysqli_query($db_con, $consulta_compartir)) {
             header("Location: http://localhost/principal.php?carga=4");
         } else {
-            header("Location: http://localhost/principal.php");
+           header("Location: http://localhost/principal.php");
         }
     } else {
         header("Location: http://localhost/principal.php?carga=5");
     }
 } else {
-    header("Location: http://localhost/principal.php");
+   header("Location: http://localhost/principal.php");
 }

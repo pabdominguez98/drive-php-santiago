@@ -75,6 +75,7 @@ if (isset($_POST['usuario'])) {
 
                         </div>
                         <button type="submit" class="btn btn-primary">Ingresar</button>
+                        <span>No tenes cuenta? <a href="">Registrate</a></span>
                     </form>
                 </div>
             </div>
