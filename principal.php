@@ -9,9 +9,26 @@ if (!isset($_SESSION['ID'])) {
 
 $id = $_SESSION['ID'];
 
+$consulta_sql_datos_usuario = "SELECT * FROM `usuarios` WHERE ID='" . $id . "'";
+
+if (mysqli_num_rows($respuesta_datos_usuario = mysqli_query($db_con, $consulta_sql_datos_usuario))) {
+    $res_arreglo = mysqli_fetch_array($respuesta_datos_usuario);
+    $nombre_usuario_principal = $res_arreglo['Nombre'];
+    $apellido_usuaro_principal = $res_arreglo['Apellido'];
+    $usuario_usuario_principal = $_SESSION['Usuario'];
+    $imagen_usuario_principal = $res_arreglo['Imagen'];
+    if ($imagen_usuario_principal == "Random") {
+        $ruta_imagen_usuario = "archivos/imagenes-perfiles/default.png";
+    } else {
+        $ruta_imagen_usuario = "archivos/imagenes-perfiles/$id/$imagen_usuario_principal";
+    }
+}
+
+
 
 
 ?>
+
 
 
 <!doctype html>
@@ -37,6 +54,38 @@ $id = $_SESSION['ID'];
         .boton-editar-datos {
             position: relative;
             margin-left: 20px;
+        }
+
+        .columna-informacion-usuario {
+            position: relative;
+            justify-content: center;
+            float: left;
+            height: 100vh;
+            max-height: 100vh;
+            background-color: beige;
+            text-align: center;
+        }
+
+        .imagen-de-usuario {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            margin-top: 60px;
+            margin-bottom: 45px;
+            border: 2px solid white;
+
+
+        }
+
+        .container {
+            margin-right: 0px !important;
+        }
+
+
+        .boton-modal-foto{
+            position: relative;
+            margin: 0 auto;
+            width: 50%;
         }
     </style>
 
@@ -158,8 +207,48 @@ $id = $_SESSION['ID'];
                 ?>
 
             </div>
-            <div class="col-6"></div>
+            <div class="col-2"></div>
+            <div class="col-4 columna-informacion-usuario">
+                <img src="<?php echo $ruta_imagen_usuario; ?>" alt="" class="imagen-de-usuario">
+                <div class="row">
+                    <button type="button" class="btn btn-primary boton-modal-foto" data-bs-toggle="modal" data-bs-target="#modal-editar-foto">
+                       Editar foto
+                    </button>
 
+
+                    <div class="modal fade" id="modal-editar-foto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Cambiar foto de perfil</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="funciones/cambiar-foto.php" method="post" enctype="multipart/form-data">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Seleccionar archivo</label>
+                                            <input type="file" class="form-control" name="imagen-carga" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="imagen-actual" value="<?php echo $imagen_usuario_principal; ?>">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" name="boton-cambiar-foto" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <ul class="list-group">
+                    <li class="list-group-item">Nombre: <?php echo $nombre_usuario_principal; ?></li>
+                    <li class="list-group-item">Apellido: <?php echo $apellido_usuaro_principal; ?></li>
+                    <li class="list-group-item">Usuario: <?php echo $usuario_usuario_principal; ?></li>
+                </ul>
+                <br>
+                <a href="editar-info.php">Editar datos personales</a>
+            </div>
 
         </div>
     </div>

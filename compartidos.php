@@ -45,8 +45,8 @@ $usuario_logueado = $_SESSION['Usuario'];
     </section>
     <div class="container">
         <div class="row">
-            <div class="col-1"></div>
-            <div class="col-5">
+            <div class="col-3"></div>
+            <div class="col-6">
                 <?php
 
 
@@ -95,7 +95,7 @@ $usuario_logueado = $_SESSION['Usuario'];
                 }
                 ?>
             </div>
-            <div class="col-6"></div>
+            <div class="col-3"></div>
         </div>
     </div>
 
