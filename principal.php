@@ -138,6 +138,19 @@ if (!empty($_GET['carga'])) {
                 }
                 ?>
 
+<?php
+                if ($carga_respuestas == 12) {
+
+                ?>
+
+                    <div class="alert alert-success" role="alert">
+                        Usuario desvinculado con exito!
+                    </div>
+
+                <?php
+                }
+                ?>
+
                 <?php
 
                 $consulta_archivos = "SELECT * FROM archivos_locales WHERE ID_usr='" . $id . "'";
@@ -248,7 +261,7 @@ if (!empty($_GET['carga'])) {
                                                     while ($respuesta_compartidos_arreglo = mysqli_fetch_array($respuesta_consulta_compartido_con)) {
                                                 ?>
                                                      <ul>
-                                                         <li><?php echo $respuesta_compartidos_arreglo['usuario_compartido']; ?></li>
+                                                         <li><?php echo $respuesta_compartidos_arreglo['usuario_compartido']; ?> <a href="funciones/dejar_compartir.php?id-archivo=<?php echo $result_archivos['ID']?>&usuario-compartido=<?php echo $respuesta_compartidos_arreglo['usuario_compartido']; ?>">Dejar de compartir</a></li>
                                                      </ul>
 
                                                 <?php
