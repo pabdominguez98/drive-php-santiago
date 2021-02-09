@@ -7,6 +7,8 @@ if (!isset($_SESSION['ID'])) {
     header("Location: index.php");
 }
 
+
+$carga_respuestas = 2120;
 $id = $_SESSION['ID'];
 
 $consulta_sql_datos_usuario = "SELECT * FROM `usuarios` WHERE ID='" . $id . "'";
@@ -22,6 +24,10 @@ if (mysqli_num_rows($respuesta_datos_usuario = mysqli_query($db_con, $consulta_s
     } else {
         $ruta_imagen_usuario = "archivos/imagenes-perfiles/$id/$imagen_usuario_principal";
     }
+}
+
+if (!empty($_GET['carga'])) {
+    $carga_respuestas = $_GET['carga'];
 }
 
 
@@ -41,53 +47,10 @@ if (mysqli_num_rows($respuesta_datos_usuario = mysqli_query($db_con, $consulta_s
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
 
     <title>Archivos locales</title>
 
-    <style type="text/css">
-        .tarjeta-archivos {
-            position: relative;
-            justify-content: center;
-            margin-top: 40px;
-        }
-
-        .boton-editar-datos {
-            position: relative;
-            margin-left: 20px;
-        }
-
-        .columna-informacion-usuario {
-            position: relative;
-            justify-content: center;
-            float: left;
-            height: 100vh;
-            max-height: 100vh;
-            background-color: beige;
-            text-align: center;
-        }
-
-        .imagen-de-usuario {
-            width: 150px;
-            height: 150px;
-            position: relative;
-            margin-top: 60px;
-            margin-bottom: 45px;
-            border: 2px solid white;
-
-
-        }
-
-        .container {
-            margin-right: 0px !important;
-        }
-
-
-        .boton-modal-foto{
-            position: relative;
-            margin: 0 auto;
-            width: 50%;
-        }
-    </style>
 
 
 </head>
@@ -102,6 +65,78 @@ if (mysqli_num_rows($respuesta_datos_usuario = mysqli_query($db_con, $consulta_s
         <div class="row">
             <div class="col-1"></div>
             <div class="col-5">
+                <?php
+                if ($carga_respuestas == 1) {
+
+                ?>
+
+                    <div class="alert alert-success" role="alert">
+                        Archivo cargado correctamente!
+                    </div>
+
+                <?php
+                }
+                ?>
+                <?php
+                if ($carga_respuestas == 2) {
+
+                ?>
+
+                    <div class="alert alert-success" role="alert">
+                        Archivo eliminado correctamente!
+                    </div>
+
+                <?php
+                }
+                ?>
+                <?php
+                if ($carga_respuestas == 3) {
+
+                ?>
+
+                    <div class="alert alert-success" role="alert">
+                        Archivo modificado correctamente!
+                    </div>
+
+                <?php
+                }
+                ?>
+                <?php
+                if ($carga_respuestas == 4) {
+
+                ?>
+
+                    <div class="alert alert-success" role="alert">
+                        Archivo compartido correctamente!
+                    </div>
+
+                <?php
+                }
+                ?>
+                <?php
+                if ($carga_respuestas == 5) {
+
+                ?>
+
+                    <div class="alert alert-danger" role="alert">
+                        No existe el usuario para compartir el archivo!
+                    </div>
+
+                <?php
+                }
+                ?>
+                <?php
+                if ($carga_respuestas == 7) {
+
+                ?>
+
+                    <div class="alert alert-success" role="alert">
+                        Foto modificada correctamente!
+                    </div>
+
+                <?php
+                }
+                ?>
 
                 <?php
 
@@ -212,7 +247,7 @@ if (mysqli_num_rows($respuesta_datos_usuario = mysqli_query($db_con, $consulta_s
                 <img src="<?php echo $ruta_imagen_usuario; ?>" alt="" class="imagen-de-usuario">
                 <div class="row">
                     <button type="button" class="btn btn-primary boton-modal-foto" data-bs-toggle="modal" data-bs-target="#modal-editar-foto">
-                       Editar foto
+                        Editar foto
                     </button>
 
 

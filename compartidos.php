@@ -23,16 +23,9 @@ $usuario_logueado = $_SESSION['Usuario'];
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
     <title>Ingreso</title>
 
-    <style type="text/css">
-        .tarjeta-archivos {
-            position: relative;
-            justify-content: center;
-            margin-top: 40px;
-        }
-    </style>
 
 
 </head>
@@ -63,17 +56,7 @@ $usuario_logueado = $_SESSION['Usuario'];
 
                     <div class="card text-center tarjeta-archivos">
                         <div class="card-header">
-                            <ul class="nav nav-pills card-header-pills">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#">Active</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                                </li>
-                            </ul>
+                            
                         </div>
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $respuesta_arreglo_comp['Descripcion']; ?></h5>

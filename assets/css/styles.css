@@ -1,0 +1,39 @@
+.tarjeta-archivos {
+  position: relative;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.boton-editar-datos {
+  position: relative;
+  margin-left: 20px;
+}
+
+.columna-informacion-usuario {
+  position: relative;
+  justify-content: center;
+  float: left;
+  height: 100vh;
+  max-height: 100vh;
+  background-color: beige;
+  text-align: center;
+}
+
+.imagen-de-usuario {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  margin-top: 60px;
+  margin-bottom: 45px;
+  border: 2px solid white;
+}
+
+.container {
+  margin-right: 0px !important;
+}
+
+.boton-modal-foto {
+  position: relative;
+  margin: 0 auto;
+  width: 50%;
+}
