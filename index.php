@@ -18,7 +18,7 @@ if (isset($_POST['usuario'])) {
         $result = mysqli_fetch_array($resultado);
         $id = $result['ID'];
         $_SESSION['ID'] = $id;
-        $_SESSION['Usuario'] = trim($usuario);
+        $_SESSION['Usuario'] = $usuario;
         header('Location: principal.php');
     } else {
 ?>
@@ -75,7 +75,7 @@ if (isset($_POST['usuario'])) {
 
                         </div>
                         <button type="submit" class="btn btn-primary">Ingresar</button>
-                        <span>No tenes cuenta? <a href="">Registrate</a></span>
+                        <span>No tenes cuenta? <a href="registro.php">Registrate</a></span>
                     </form>
                 </div>
             </div>

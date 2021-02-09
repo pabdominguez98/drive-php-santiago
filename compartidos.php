@@ -50,7 +50,10 @@ $usuario_logueado = $_SESSION['Usuario'];
                 <?php
 
 
-                $consulta_archivos_compartidos = "SELECT * FROM archivos_locales LEFT JOIN archivos_compartidos ON archivos_locales.ID = archivos_compartidos.ID_archivo WHERE archivos_compartidos.usuario_compartido='" . $usuario_logueado . "'";
+                $consulta_archivos_compartidos = "SELECT * FROM archivos_locales 
+                    LEFT JOIN archivos_compartidos 
+                       ON archivos_locales.ID = archivos_compartidos.ID_archivo  
+                         WHERE archivos_compartidos.usuario_compartido='" . $usuario_logueado . "'";
 
                 $respuesta_archivos_compartidos = mysqli_query($db_con, $consulta_archivos_compartidos);
 
@@ -78,7 +81,7 @@ $usuario_logueado = $_SESSION['Usuario'];
                             <br>
                             <span class="card-text">Fecha de carga: <?php echo $respuesta_arreglo_comp['Fecha'] ?></span>
                             <br>
-                            <span class="card-text">Usuario: <?php echo $respuesta_arreglo_comp['Usuario'] ?></span>
+                            <span class="card-text">Usuario: <?php echo $respuesta_arreglo_comp['usuario'] ?></span>
                             <br>
                             <br>
                             <?php
